@@ -1,0 +1,118 @@
+/* home.css */
+body, html {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #1a1a1a; /* 배경색을 어둡게 */
+    color: #ffd700; /* 기본 텍스트 색상을 금색으로 */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.home-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a; /* 배경색을 어둡게 */
+    color: #ffd700; /* 텍스트 색상을 금색으로 */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; /* 헤더 배경색을 검은색으로 */
+    color: #ffd700; /* 텍스트 색상을 금색으로 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 색상을 더 어둡게 */
+}
+
+.site-title {
+    font-size: 36px;
+    color: #ffd700; /* 사이트 타이틀 색상을 금색으로 */
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-money {
+    font-size: 18px;
+    margin-right: 20px;
+    color: #ffffff; /* 텍스트 색상을 금색으로 */
+}
+
+.navButton {
+    background-color: #ffd700; /* 버튼 배경색을 금색으로 */
+    color: #000000; /* 텍스트 색상을 검은색으로 */
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.navButton:hover {
+    background-color: #ffc400; /* 호버 시 더 진한 금색으로 */
+    transform: scale(1.05);
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content {
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #ffd700; /* 타이틀 색상을 금색으로 */
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gameButton {
+    background-color: #ffd700; /* 버튼 배경색을 금색으로 */
+    color: #000000; /* 텍스트 색상을 검은색으로 */
+    padding: 40px 60px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gameButton:hover {
+    background-color: #ffc400; /* 호버 시 더 진한 금색으로 */
+    transform: scale(1.05);
+}
+
+.footer {
+    background-color: #000000; /* 푸터 배경색을 검은색으로 */
+    color: #ffd700; /* 텍스트 색상을 금색으로 */
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}

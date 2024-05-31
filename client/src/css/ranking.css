@@ -1,0 +1,73 @@
+.ranking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1e1e1e; /* Dark background */
+    color: #ffffff; /* White text */
+    padding: 20px; /* Padding around the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Shadow for 3D effect */
+    margin-top: 5%;
+}
+
+.top-users {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.top-user {
+    font-size: 1.5em; /* Larger font size */
+    font-weight: bold; /* Bold font */
+    padding: 10px 20px; /* Padding around top users */
+    background: #ffcc00; /* Yellow background */
+    color: #1e1e1e; /* Dark text */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+    transition: background 0.3s; /* Smooth transition for background change */
+}
+
+.top-user:hover {
+    background: #e6b800; /* Darker yellow on hover */
+}
+
+.user-tables {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.user-table {
+    margin: 20px 0; /* Space between tables */
+    width: 100%; /* Full width */
+}
+
+.user-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2e2e2e; /* Darker background for table */
+    color: #ffffff; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Ensures border-radius is visible */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ffcc00; /* Yellow border */
+    padding: 8px;
+    text-align: center;
+}
+
+.user-table th {
+    background-color: #444444; /* Dark background for header */
+    color: #ffcc00; /* Yellow text for header */
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #333333; /* Darker background for even rows */
+}
+
+.user-table tbody tr:hover {
+    background-color: #555555; /* Highlight on hover */
+}

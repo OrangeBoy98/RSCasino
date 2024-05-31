@@ -1,0 +1,65 @@
+/* paymodal.css */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensures the modal is on top */
+}
+
+.modal-content {
+    background-color: #1a1a1a; /* Dark background */
+    color: #ffd700; /* Gold text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for a 3D effect */
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.modal-content input {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ffd700; /* Gold border */
+    background-color: #333333; /* Dark input background */
+    color: #ffffff; /* White text color */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #ffd700; /* Gold background */
+    color: #000000; /* Black text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #ffc400; /* Darker gold on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}

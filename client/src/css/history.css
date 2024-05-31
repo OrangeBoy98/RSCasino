@@ -1,0 +1,34 @@
+.history-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #ffcc00; /* Yellow border */
+    padding: 10px;
+    text-align: center;
+}
+
+.history-table th {
+    background-color: #444444; /* Dark background for header */
+    color: #ffcc00; /* Yellow text for header */
+    font-weight: bold;
+}
+
+.history-table tbody tr:nth-child(even) {
+    background-color: #333333; /* Darker background for even rows */
+}
+
+.history-table tbody tr:hover {
+    background-color: #555555; /* Highlight on hover */
+}
+
+.history-table td {
+    color: #ffffff; /* White text for table cells */
+}

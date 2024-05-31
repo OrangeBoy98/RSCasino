@@ -1,0 +1,188 @@
+.slot-machine-container {
+    background: #1e1e1e;
+    /* Dark background */
+    color: #ffffff;
+    /* White text */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Padding around the container */
+    max-width: 800px;
+    /* Maximum width of the container */
+    margin: auto;
+    /* Center the container */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Shadow for a 3D effect */
+    text-align: center;
+    /* Center text alignment */
+}
+
+.slots {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    height: 300px;
+    /* 전체 슬롯 머신 높이 */
+    width: 600px;
+    /* 전체 슬롯 머신 너비 */
+    border: 5px solid #333;
+    /* 슬롯 머신 테두리 */
+    border-radius: 10px;
+    background-color: #444;
+    /* 슬롯 배경 어두운 회색 */
+}
+
+.slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    overflow: hidden;
+    height: 100%;
+    /* 슬롯 높이 */
+    width: 180px;
+    /* 슬롯 너비 */
+    border: 2px solid #555;
+    /* 각 슬롯 테두리 어두운 회색 */
+    border-radius: 5px;
+    background-color: #222;
+    /* 슬롯 배경색 어두운 회색 */
+}
+
+.slot-symbol {
+    font-size: 4rem;
+    height: 100%;
+    /* 각 심볼 높이 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    /* 심볼 색상 흰색 */
+}
+
+.slot-symbol-large {
+    font-size: 5rem;
+    height: 100%;
+    /* 각 심볼 높이 */
+    margin: 10px 0;
+    color: #ffffff;
+    /* 심볼 색상 흰색 */
+}
+
+.bet-section {
+    margin-bottom: 20px;
+}
+
+.bet-input {
+    width: 80%;
+    /* Input width */
+    padding: 10px;
+    /* Padding inside the input */
+    margin-bottom: 20px;
+    /* Space below the input */
+    border: 2px solid #ffcc00;
+    /* Yellow border */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size inside the input */
+    background: #333333;
+    /* Dark background */
+    color: #ffffff;
+    /* White text */
+}
+
+.bet-button {
+    background: #ffcc00;
+    /* Yellow background */
+    color: #1e1e1e;
+    /* Dark text */
+    padding: 10px 20px;
+    /* Padding inside the button */
+    font-size: 18px;
+    /* Larger font size */
+    border: none;
+    /* No border */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background 0.3s;
+    /* Smooth transition for background change */
+}
+
+.bet-button:hover {
+    background: #e6b800;
+    /* Darker yellow on hover */
+}
+
+.spin-button {
+    background: #ffcc00;
+    /* Yellow background */
+    color: #1e1e1e;
+    /* Dark text */
+    padding: 10px 20px;
+    /* Padding inside the button */
+    font-size: 18px;
+    /* Larger font size */
+    border: none;
+    /* No border */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background 0.3s;
+    /* Smooth transition for background change */
+}
+
+.spin-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.spin-button:hover:not(:disabled) {
+    background: #e6b800;
+    /* Darker yellow on hover */
+}
+
+.money,
+.result {
+    display: block;
+    /* Block display */
+    font-size: 18px;
+    /* Larger font size */
+    margin-top: 20px;
+    /* Space above the result text */
+    font-weight: bold;
+    /* Bold font */
+    color: #ffffff;
+    /* White text */
+}
+
+.bets-table,
+.winners-table {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #555;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+td {
+    background-color: #444;
+    color: #fff;
+}
