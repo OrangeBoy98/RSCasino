@@ -46,9 +46,11 @@ export const randomGamble = async (req, res, next) => {
 
 export const bet = async (req, res, next) => {
     const { userId, amount } = req.body;
+    console.log(req.body);
 
     try {
         let currentSlot = await Slot.findOne({ winner: null }).sort({ roundNumber: -1 }).limit(1);
+        await User.findOneAndUpdate({ _id: userId }, { $inc: { money: -amount } });
 
         if (!currentSlot) {
             const newSlot = new Slot({ roundNumber: 1 });
@@ -59,6 +61,14 @@ export const bet = async (req, res, next) => {
             user: userId,
             amount: amount,
         };
+
+        const newHistory = new History({
+            userId: userId,
+            betAmount: amount,
+            result: -amount, // 베팅시 결과는 음수로 기록
+            betType: 'Slot'
+        });
+        await newHistory.save();
 
         currentSlot.bets.push(bet);
         await currentSlot.save();
@@ -83,6 +93,14 @@ export const slot = async (req, res, next) => {
             const winner = await User.findById(winnerBet.user);
             winner.money += totalAmount;
             await winner.save();
+
+            const winHistory = new History({
+                userId: winner._id,
+                betAmount: totalAmount,
+                result: totalAmount, // 승리 금액 기록
+                betType: 'Slot'
+            });
+            await winHistory.save();
 
             // 새로운 회차 생성
             const newSlot = new Slot({ roundNumber: currentSlot.roundNumber + 1 });

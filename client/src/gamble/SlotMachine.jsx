@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import '../css/slotmachine.css';
@@ -11,12 +11,29 @@ const SlotMachine = () => {
     Math.floor(Math.random() * 6),
     Math.floor(Math.random() * 6),
   ]);
-  const [result, setResult] = useState('');
   const [money, setMoney] = useState('');
   const [betAmount, setBetAmount] = useState('');
   const [spinning, setSpinning] = useState(false);
   const [bets, setBets] = useState([]);
   const [roundWinners, setRoundWinners] = useState([]);
+
+  const fetchBets = useCallback(async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/gamble/bets`, { withCredentials: true });
+      setBets(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [apiUrl]);
+
+  const fetchWinners = useCallback(async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/gamble/rounds`, { withCredentials: true });
+      setRoundWinners(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },[apiUrl]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,25 +47,7 @@ const SlotMachine = () => {
     fetchData();
     fetchBets();
     fetchWinners();
-  }, [apiUrl, user._id]);
-
-  const fetchBets = async () => {
-    try {
-      const res = await axios.get(`${apiUrl}/gamble/bets`, { withCredentials: true });
-      setBets(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const fetchWinners = async () => {
-    try {
-      const res = await axios.get(`${apiUrl}/gamble/rounds`, { withCredentials: true });
-      setRoundWinners(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }, [apiUrl, user._id, fetchBets, fetchWinners]);
 
   const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓'];
 
@@ -88,10 +87,12 @@ const SlotMachine = () => {
               // 결과 판단
               const finalSymbols = slotIndices.map((index) => symbols[index]);
               if (finalSymbols[0] === finalSymbols[1] && finalSymbols[1] === finalSymbols[2]) {
-                setResult('You won!');
+                alert('축하드립니다 !!');
                 completeRound();
+                window.location.reload();
               } else {
-                setResult('Try again!');
+                alert('다음 기회에 ...');
+                window.location.reload();
               }
             }, 500);
           }, 500);
@@ -139,7 +140,6 @@ const SlotMachine = () => {
         />
         <button className="spin-button" onClick={placeBetAndSpin} disabled={spinning}>Place Bet and Spin</button>
       </div>
-      <p className="result">{result}</p>
       <p className="money">배팅가능 금액: {money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
       <div className="winners-table">
         <h2>Round Winners</h2>
