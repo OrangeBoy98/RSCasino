@@ -26,7 +26,7 @@ const Login = () => {
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
             navigate('/');
         } catch (err) {
-            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+            dispatch({ type: "LOGIN_FAILURE" });
             if (err.response.status === 404) {
                 alert("존재하지 않는 아이디입니다.");
             } else if (err.response.status === 400) {

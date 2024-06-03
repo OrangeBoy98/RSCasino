@@ -19,7 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/gamble/random" element={<Random />} />
-          <Route path="/gamble/odd-even" element={<SlotMachine />} />
+          <Route path="/gamble/slot" element={<SlotMachine />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/shop" element={<Shop />}></Route>
         </Routes>

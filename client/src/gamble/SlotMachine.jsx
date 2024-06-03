@@ -13,27 +13,28 @@ const SlotMachine = () => {
   ]);
   const [money, setMoney] = useState('');
   const [betAmount, setBetAmount] = useState('');
+  const [viewAmount, setViewAmount] = useState('');
   const [spinning, setSpinning] = useState(false);
   const [bets, setBets] = useState([]);
   const [roundWinners, setRoundWinners] = useState([]);
 
   const fetchBets = useCallback(async () => {
     try {
-      const res = await axios.get(`${apiUrl}/gamble/bets`, { withCredentials: true });
+      const res = await axios.get(`${apiUrl}/gamble/bets/${user._id}`, { withCredentials: true });
       setBets(res.data);
     } catch (err) {
       console.log(err);
     }
-  }, [apiUrl]);
+  }, [apiUrl, user._id]);
 
   const fetchWinners = useCallback(async () => {
     try {
-      const res = await axios.get(`${apiUrl}/gamble/rounds`, { withCredentials: true });
+      const res = await axios.get(`${apiUrl}/gamble/rounds/${user._id}`, { withCredentials: true });
       setRoundWinners(res.data);
     } catch (err) {
       console.log(err);
     }
-  },[apiUrl]);
+  },[apiUrl, user._id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,14 +50,14 @@ const SlotMachine = () => {
     fetchWinners();
   }, [apiUrl, user._id, fetchBets, fetchWinners]);
 
-  const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓'];
+  const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '7️⃣', '🔔', '💎', '💰'];
 
   const placeBetAndSpin = async () => {
     if (betAmount > 0 && betAmount <= money) {
       setSpinning(true);
       try {
         // 배팅 요청
-        await axios.post(`${apiUrl}/gamble/bet`, {
+        await axios.post(`${apiUrl}/gamble/bet/${user._id}`, {
           userId: user._id,
           amount: betAmount
         }, { withCredentials: true });
@@ -100,6 +101,7 @@ const SlotMachine = () => {
         
         fetchBets();
         setBetAmount('');
+        setViewAmount('');
       } catch (err) {
         console.log(err);
         setSpinning(false);
@@ -120,6 +122,19 @@ const SlotMachine = () => {
     }
   };
 
+  const handleOnChange = (e) => {
+    let value = e.target.value;
+    const numCheck = /^[0-9,]*$/.test(value); // 숫자와 콤마만 허용
+
+    if (numCheck) {
+      const numValue = value.replaceAll(',', '');
+      setBetAmount(Number(numValue));
+      value = numValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    setViewAmount(value);
+  }
+
   return (
     <div className="slot-machine-container">
       <h1>Slot Machine</h1>
@@ -132,9 +147,9 @@ const SlotMachine = () => {
       </div>
       <div className="bet-section">
         <input
-          type="number"
-          value={betAmount}
-          onChange={(e) => setBetAmount(e.target.value)}
+          type="text"
+          value={viewAmount}
+          onChange={handleOnChange}
           className="bet-input"
           placeholder="Enter your bet"
         />
@@ -175,7 +190,7 @@ const SlotMachine = () => {
             {bets.map((bet) => (
               <tr key={bet._id}>
                 <td>{bet.user.username}</td>
-                <td>{bet.amount}</td>
+                <td>{bet.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</td>
               </tr>
             ))}
           </tbody>

@@ -91,8 +91,8 @@ const Home = () => {
         <div className="main-content">
           <div className="game-grid">
             <button className="gameButton" onClick={() => handleNavigation('/gamble/random')}>RULETTE</button>
-            <button className="gameButton" onClick={() => handleNavigation('/gamble/odd-even')}>OddEven</button>
-            <button className="gameButton" onClick={() => handleNavigation('/shop')}>Shop</button>
+            <button className="gameButton" onClick={() => handleNavigation('/gamble/slot')}>SLOT</button>
+            <button className="gameButton" onClick={() => handleNavigation('/shop')}>준비중</button>
             <button className="gameButton" onClick={() => handleNavigation('/ranking')}>RANKING</button>
           </div>
         </div>
