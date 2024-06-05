@@ -1,4 +1,3 @@
-// src/components/SpinningWheel.js
 import React from 'react';
 import { Wheel } from 'react-custom-roulette';
 

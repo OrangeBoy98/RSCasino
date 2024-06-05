@@ -113,7 +113,7 @@ const SlotMachine = () => {
 
   const completeRound = async () => {
     try {
-      const res = await axios.post(`${apiUrl}/gamble/round/complete`, {}, { withCredentials: true });
+      const res = await axios.post(`${apiUrl}/gamble/round/complete/${user._id}`, {}, { withCredentials: true });
       fetchBets();
       fetchWinners();
       alert(`${res.data.winner} won ${res.data.amount} money!`);
@@ -171,7 +171,7 @@ const SlotMachine = () => {
               <tr key={round.roundNumber}>
                 <td>{round.roundNumber}</td>
                 <td>{round.winner ? round.winner.username : 'No winner'}</td>
-                <td>{round.bets.reduce((sum, bet) => sum + bet.amount, 0)}</td>
+                <td>{round.bets.reduce((sum, bet) => sum + bet.amount, 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</td>
               </tr>
             ))}
           </tbody>

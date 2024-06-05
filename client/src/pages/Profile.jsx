@@ -3,7 +3,6 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import '../css/profile.css'; // CSS 파일 import
 import { Link } from 'react-router-dom';
-import Payment from '../components/Payment';
 import History from '../components/History';
 import PayModal from '../components/PayModal';
 

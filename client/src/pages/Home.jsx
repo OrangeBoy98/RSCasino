@@ -72,7 +72,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="header">
-        <h1 className="site-title">으갸갸갸갸갹</h1>
+        <h1 className="site-title">Noname</h1>
         <div className="nav-buttons">
           {!user ? (
               <span className="user-money"></span>
@@ -98,7 +98,7 @@ const Home = () => {
         </div>
       </div>
       <footer className="footer">
-        <p>&copy; 2024 으갸갸갸갸갹. All rights reserved.</p>
+        <p>&copy; 2024 Noname. All rights reserved.</p>
       </footer>
     </div>
   );
