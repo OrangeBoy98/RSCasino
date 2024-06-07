@@ -14,9 +14,10 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+	origin: [process.env.CLIENT_URL, "http://localhost:3000", "http://moblecasino.xyz", "http://moblecasino.xyz:3000","http://54.180.126.209"],
+	credentials: true
 }));
+
 app.use(cookieParser());
 app.use(express.json());
 app.use('/api/auth', authRoute);
@@ -25,30 +26,30 @@ app.use('/api/user', userRoute);
 app.use('/api/payment', paymentRoute);
 app.use('/api/history', historyRoute);
 const connect = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO);
-        console.log('connect');
-    } catch (error) {
-        throw error;
-    }
+	try {
+		await mongoose.connect(process.env.MONGO);
+		console.log('connect');
+	} catch (error) {
+		throw error;
+	}
 };
 
 mongoose.connection.on('disconnect', () => {
-    console.log('disconnect');
+	console.log('disconnect');
 });
 
 app.use((err, req, res, next) => {
-    const errStatus = err.status || 500;
-    const errMessage = err.message|| 'Something went wrong!';
-    return res.status(errStatus).json({
-        success: false,
-        status: errStatus,
-        message: errMessage,
-        stack: err.stack,
-    });
+	const errStatus = err.status || 500;
+	const errMessage = err.message|| 'Something went wrong!';
+	return res.status(errStatus).json({
+		success: false,
+		status: errStatus,
+		message: errMessage,
+		stack: err.stack,
+	});
 });
 
 app.listen(process.env.PORT, () => {
-    connect();
-    console.log(`server is running on port ${process.env.PORT}`);
+	connect();
+	console.log(`server is running on port ${process.env.PORT}`);
 })
