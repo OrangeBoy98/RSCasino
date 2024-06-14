@@ -13,7 +13,7 @@ import authRoute from './routes/auth.js';
 import gambleRoute from './routes/gamble.js'
 import userRoute from './routes/user.js';
 // import paymentRoute from './routes/payment.js';
-// import historyRoute from './routes/history.js';
+import historyRoute from './routes/history.js';
 const app = express(); 
 dotenv.config();
 
@@ -63,7 +63,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/gamble', gambleRoute);
 app.use('/api/user', userRoute);
 // app.use('/api/payment', paymentRoute);
-// app.use('/api/history', historyRoute);
+app.use('/api/history', historyRoute);
 app.listen(process.env.PORT, () => { 
     console.log(`Server is running on port ${process.env.PORT}`); 
 }); 
